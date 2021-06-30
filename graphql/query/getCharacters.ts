@@ -37,7 +37,3 @@ export const GET_CHARACTERS = gql`
     }
   }
 `;
-
-export default function useCharacters(varibles?: {[key: string]: any}) {
-  return useQuery(GET_CHARACTERS, varibles);
-}

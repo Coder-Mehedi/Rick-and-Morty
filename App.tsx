@@ -1,5 +1,3 @@
-// In App.js in a new project
-
 import React from 'react';
 import {View, Text, Button, Image, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';

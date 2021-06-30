@@ -1,19 +1,14 @@
 import {useQuery} from '@apollo/client';
 import React, {Fragment, useState} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
-  View,
   Image,
   FlatList,
   Button,
   Pressable,
 } from 'react-native';
-import useCharacters, {GET_CHARACTERS} from '../graphql/query/getCharacters';
+import {GET_CHARACTERS} from '../graphql/query/getCharacters';
 
 const Home = ({navigation}: {navigation: any}) => {
   const [data, setData] = useState<any>(null);
@@ -57,7 +52,6 @@ const Home = ({navigation}: {navigation: any}) => {
             variables: {page: 5},
           });
           setData([...data, ...res.data.characters.results]);
-          console.log(data);
         }}
       />
     </Fragment>
