@@ -1,4 +1,5 @@
 export const Colors = {
+  screenHead: '#fff',
   primary: '#e4a788',
   focused: '#e4a788',
   inActive: '#7e7f7e',

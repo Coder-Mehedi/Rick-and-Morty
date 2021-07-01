@@ -14,16 +14,12 @@ function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color}) => {
+          tabBarIcon: ({focused}) => {
             let iconName = '';
             let size = 20;
-            if (route.name === 'Characters') {
-              iconName = 'id-card';
-            } else if (route.name === 'Episodes') {
-              iconName = 'tv';
-            } else if (route.name === 'Locations') {
-              iconName = 'map';
-            }
+            if (route.name === 'Characters') iconName = 'id-card';
+            if (route.name === 'Episodes') iconName = 'tv';
+            if (route.name === 'Locations') iconName = 'map';
             return (
               <FontAwesome5
                 name={iconName}

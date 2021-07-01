@@ -1,7 +1,11 @@
 import {useQuery} from '@apollo/client';
 import React, {Fragment, useState} from 'react';
-import {StyleSheet, Text, Image, FlatList, Pressable} from 'react-native';
+import {StyleSheet, Text, Image, FlatList, Pressable, View} from 'react-native';
 import {GET_CHARACTERS} from '../query/getCharacters';
+import {useNavigation} from '@react-navigation/native';
+import {ICharacter} from 'src/interfaces';
+import {Colors} from '../utils/colors';
+import ScreenHeadText from './_root/ScreenHeadText';
 
 const CharactersScreen = ({navigation}: {navigation: any}) => {
   const [data, setData] = useState<any>(null);
@@ -15,6 +19,7 @@ const CharactersScreen = ({navigation}: {navigation: any}) => {
 
   return (
     <Fragment>
+      <ScreenHeadText>Characters</ScreenHeadText>
       <FlatList
         onEndReached={async () => {
           const res = await fetchMore({
@@ -26,31 +31,60 @@ const CharactersScreen = ({navigation}: {navigation: any}) => {
         style={styles.container}
         data={data}
         renderItem={({item: character}) => (
-          <Pressable
-            key={character.name}
-            onPress={() => {
-              navigation.navigate('CharacterDetails', {character});
-            }}>
-            <Image source={{uri: character.image}} style={styles.image} />
-            <Text style={styles.name}>{character.name}</Text>
-          </Pressable>
+          <CharactersScreen.Character character={character} />
         )}
       />
     </Fragment>
   );
 };
+CharactersScreen.Character = ({character}: {character: ICharacter}) => {
+  const navigation = useNavigation();
+  return (
+    <Pressable
+      style={styles.itemContainer}
+      key={character.name}
+      onPress={() => {
+        navigation.navigate('CharacterDetails', {character});
+      }}>
+      <Image source={{uri: character.image}} style={styles.image} />
+      <View style={styles.nameAndCount}>
+        <Text style={styles.name}>{character.name}</Text>
+        <Text style={styles.episodeCount}>
+          {character.episode.length} Episodes
+        </Text>
+      </View>
+    </Pressable>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.primaryBackground,
   },
-  name: {
-    fontSize: 20,
+  itemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderTopWidth: 1,
+    borderColor: Colors.separator,
+  },
+
+  image: {
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+  },
+  nameAndCount: {
     padding: 10,
   },
-  image: {
-    width: '100%',
-    height: 200,
+  name: {
+    fontSize: 22,
+
+    color: Colors.primary,
+  },
+  episodeCount: {
+    fontSize: 18,
+    color: Colors.inActive,
   },
 });
 
