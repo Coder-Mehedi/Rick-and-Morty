@@ -1,7 +1,7 @@
 import {useQuery} from '@apollo/client';
 import React, {Fragment, useState} from 'react';
 import {StyleSheet, Text, Image, FlatList, Pressable, View} from 'react-native';
-import {GET_CHARACTERS} from '../query/getCharacters';
+import {GET_CHARACTERS} from '../graphql/query/getCharacters';
 import {useNavigation} from '@react-navigation/native';
 import {ICharacter} from 'src/interfaces';
 import {Colors} from '../utils/colors';

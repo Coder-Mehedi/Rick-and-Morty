@@ -50,6 +50,7 @@ const CharacterDetails = ({route}: {route: any}) => {
         <SectionText>Info</SectionText>
         {infoToShow.map(info => (
           <CharacterDetails.InfoItem
+            key={info.label}
             iconName={info.icon}
             label={info.label}
             value={info.value}
@@ -58,6 +59,7 @@ const CharacterDetails = ({route}: {route: any}) => {
         <SectionText>Episodes</SectionText>
         {character.episode.map(episode => (
           <CharacterDetails.EpisodeItem
+            key={episode.name}
             episodeName={episode.name}
             date={episode.air_date}
           />
