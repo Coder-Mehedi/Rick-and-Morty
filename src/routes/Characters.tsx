@@ -1,19 +1,24 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import React, {Fragment} from 'react';
+import React from 'react';
+import {CharactersProvider} from '../components/_context/charactersContext';
 import CharacterDetails from '../components/CharacterDetails';
-import CharactersScreen from '../components/CharactersScreen';
+import Characters from '../screens/Characters';
+import {Screen} from '../utils/screens';
 
 const Stack = createStackNavigator();
 
-const Characters = ({navigation}: {navigation: any}) => {
+const CharactersRoute = () => {
   return (
-    <Fragment>
+    <CharactersProvider>
       <Stack.Navigator screenOptions={{header: () => null}}>
-        <Stack.Screen name="Characters" component={CharactersScreen} />
-        <Stack.Screen name="CharacterDetails" component={CharacterDetails} />
+        <Stack.Screen name={Screen.Characters} component={Characters} />
+        <Stack.Screen
+          name={Screen.CharacterDetails}
+          component={CharacterDetails}
+        />
       </Stack.Navigator>
-    </Fragment>
+    </CharactersProvider>
   );
 };
 
-export default Characters;
+export default CharactersRoute;

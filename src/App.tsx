@@ -1,11 +1,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Characters from './routes/Characters';
+import CharactersRoute from './routes/Characters';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from './utils/colors';
-import Episodes from './components/Episodes';
-import Locations from './components/Locations';
+import {Screen} from './utils/screens';
+import EpisodesRoute from './routes/Episodes';
+import LocationsRoute from './routes/Locations';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -16,10 +17,10 @@ function App() {
         screenOptions={({route}) => ({
           tabBarIcon: ({focused}) => {
             let iconName = '';
-            let size = 20;
-            if (route.name === 'Characters') iconName = 'id-card';
-            if (route.name === 'Episodes') iconName = 'tv';
-            if (route.name === 'Locations') iconName = 'map';
+            let size = 19;
+            if (route.name === Screen.Characters) iconName = 'id-card';
+            if (route.name === Screen.Episodes) iconName = 'tv';
+            if (route.name === Screen.Locations) iconName = 'map';
             return (
               <FontAwesome5
                 name={iconName}
@@ -32,9 +33,9 @@ function App() {
         activeColor={Colors.focused}
         inactiveColor={Colors.inActive}
         barStyle={{backgroundColor: Colors.secondaryBackground}}>
-        <Tab.Screen name="Characters" component={Characters} />
-        <Tab.Screen name="Episodes" component={Episodes} />
-        <Tab.Screen name="Locations" component={Locations} />
+        <Tab.Screen name={Screen.Characters} component={CharactersRoute} />
+        <Tab.Screen name={Screen.Episodes} component={EpisodesRoute} />
+        <Tab.Screen name={Screen.Locations} component={LocationsRoute} />
       </Tab.Navigator>
     </NavigationContainer>
   );
