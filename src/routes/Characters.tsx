@@ -1,5 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
+import EpisodeDetails from '../screens/EpisodeDetails';
 import {CharactersProvider} from '../components/_context/charactersContext';
 import CharacterDetails from '../screens/CharacterDetails';
 import Characters from '../screens/Characters';
@@ -16,6 +17,7 @@ const CharactersRoute = () => {
           name={Screen.CharacterDetails}
           component={CharacterDetails}
         />
+        <Stack.Screen name={Screen.EpisodeDetails} component={EpisodeDetails} />
       </Stack.Navigator>
     </CharactersProvider>
   );

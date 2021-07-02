@@ -20,15 +20,11 @@ export const GET_CHARACTERS = gql`
         origin {
           id
           name
-          type
-          dimension
         }
         location {
           id
           name
-          type
         }
-        image
         episode {
           id
           name

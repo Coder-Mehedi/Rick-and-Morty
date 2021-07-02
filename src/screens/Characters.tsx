@@ -13,9 +13,11 @@ import {ICharacter} from '../interfaces';
 import {Colors} from '../utils/colors';
 import ScreenHeadText from '../components/ScreenHeadText';
 import {useCharacters} from '../components/_context/charactersContext';
+import {Screen} from '../utils/screens';
 
 const Characters = () => {
   const {data, loading, fetchMoreData} = useCharacters();
+
   return (
     <Fragment>
       <ScreenHeadText>Characters</ScreenHeadText>
@@ -23,21 +25,15 @@ const Characters = () => {
         onEndReached={fetchMoreData}
         style={styles.container}
         data={data}
-        renderItem={({item: character}) => (
+        renderItem={({item: character}: {item: ICharacter}) => (
           <Characters.Character character={character} />
         )}
       />
-      {/* {loading && (
-        <ActivityIndicator
-          style={{backgroundColor: Colors.primaryBackground}}
-          color={Colors.focused}
-          size="large"
-        />
-      )} */}
     </Fragment>
   );
 };
 Characters.Character = ({character}: {character: ICharacter}) => {
+  console.log('character', character);
   const navigation = useNavigation();
   return (
     <>
@@ -45,7 +41,7 @@ Characters.Character = ({character}: {character: ICharacter}) => {
         style={styles.itemContainer}
         key={character.name}
         onPress={() => {
-          navigation.navigate('CharacterDetails', {character});
+          navigation.navigate(Screen.CharacterDetails, {character});
         }}>
         <Image source={{uri: character.image}} style={styles.image} />
         <View style={styles.nameAndCount}>

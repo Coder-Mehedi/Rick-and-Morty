@@ -17,6 +17,24 @@ export const GET_EPISODES = gql`
         characters {
           id
           name
+          status
+          species
+          type
+          gender
+          image
+          origin {
+            id
+            name
+          }
+          location {
+            id
+            name
+          }
+          episode {
+            id
+            name
+            air_date
+          }
         }
       }
     }

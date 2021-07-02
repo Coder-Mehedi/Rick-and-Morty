@@ -3,6 +3,7 @@ import React from 'react';
 import {Screen} from '../utils/screens';
 import {EpisodesProvider} from '../components/_context/episodesContext';
 import Episodes from '../screens/Episodes';
+import EpisodeDetails from '../screens/EpisodeDetails';
 
 const Stack = createStackNavigator();
 
@@ -11,6 +12,7 @@ const EpisodesRoute = () => {
     <EpisodesProvider>
       <Stack.Navigator screenOptions={{header: () => null}}>
         <Stack.Screen name={Screen.Episodes} component={Episodes} />
+        <Stack.Screen name={Screen.EpisodeDetails} component={EpisodeDetails} />
       </Stack.Navigator>
     </EpisodesProvider>
   );

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   FlatList,
+  Pressable,
 } from 'react-native';
 import {ICharacter} from '../interfaces';
 import {Colors} from '../utils/colors';
@@ -14,20 +15,13 @@ import EpisodeItem from '../components/EpisodeItem';
 import InfoItem from '../components/InfoItem';
 import ScreenHeadText from '../components/ScreenHeadText';
 import SectionText from '../components/SectionText';
-
-interface InfoItemProps {
-  iconName: string;
-  label: string;
-  value: string;
-}
-
-interface EpisodeItemProps {
-  episodeName: string;
-  date: string;
-}
+import {useNavigation} from '@react-navigation/native';
+import {Screen} from '../utils/screens';
 
 const CharacterDetails = ({route}: {route: any}) => {
   const character: ICharacter = route.params.character;
+
+  const navigation = useNavigation();
 
   const infoToShow = [
     {label: 'Species', value: character.species, icon: 'paw', id: '1'},
