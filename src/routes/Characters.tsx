@@ -1,7 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {CharactersProvider} from '../components/_context/charactersContext';
-import CharacterDetails from '../components/CharacterDetails';
+import CharacterDetails from '../screens/CharacterDetails';
 import Characters from '../screens/Characters';
 import {Screen} from '../utils/screens';
 

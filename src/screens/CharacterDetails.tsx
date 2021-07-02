@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 import {ICharacter} from '../interfaces';
 import {Colors} from '../utils/colors';
-import EpisodeItem from './_root/EpisodeItem';
-import InfoItem from './_root/InfoItem';
-import ScreenHeadText from './_root/ScreenHeadText';
-import SectionText from './_root/SectionText';
+import EpisodeItem from '../components/EpisodeItem';
+import InfoItem from '../components/InfoItem';
+import ScreenHeadText from '../components/ScreenHeadText';
+import SectionText from '../components/SectionText';
 
 interface InfoItemProps {
   iconName: string;

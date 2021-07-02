@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {ICharacter} from '../../interfaces';
-import {Colors} from '../../utils/colors';
+import {Colors} from '../utils/colors';
 
 interface EpisodeItemProps {
   episodeName: string;

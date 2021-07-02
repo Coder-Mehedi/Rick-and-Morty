@@ -11,7 +11,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {ICharacter} from '../interfaces';
 import {Colors} from '../utils/colors';
-import ScreenHeadText from '../components/_root/ScreenHeadText';
+import ScreenHeadText from '../components/ScreenHeadText';
 import {useCharacters} from '../components/_context/charactersContext';
 
 const Characters = () => {

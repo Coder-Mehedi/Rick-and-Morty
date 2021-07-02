@@ -1,20 +1,20 @@
 import React, {ReactChild} from 'react';
 import {StyleSheet, Text} from 'react-native';
-import {Colors} from '../../utils/colors';
+import {Colors} from '../utils/colors';
 
-const SectionText = ({children}: {children: ReactChild}) => {
+const ScreenHeadText = ({children}: {children: ReactChild}) => {
   return <Text style={styles.heading}>{children}</Text>;
 };
 
 const styles = StyleSheet.create({
   heading: {
-    fontSize: 20,
-    padding: 10,
+    fontSize: 40,
+    fontWeight: 'bold',
+    paddingBottom: 10,
     paddingLeft: 10,
-    color: Colors.inActive,
+    color: Colors.screenHead,
     backgroundColor: Colors.primaryBackground,
-    textTransform: 'uppercase',
   },
 });
 
-export default SectionText;
+export default ScreenHeadText;

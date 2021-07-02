@@ -1,10 +1,9 @@
 import React from 'react';
 import {View, FlatList} from 'react-native';
-import SectionText from '../components/_root/SectionText';
-import ScreenHeadText from '../components/_root/ScreenHeadText';
+import ScreenHeadText from '../components/ScreenHeadText';
 import {useEpisodes} from '../components/_context/episodesContext';
 import {IEpisode} from '../interfaces';
-import EpisodeItem from '../components/_root/EpisodeItem';
+import EpisodeItem from '../components/EpisodeItem';
 
 const Episodes = () => {
   const {data, loading, fetchMoreData} = useEpisodes();
