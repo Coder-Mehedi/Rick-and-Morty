@@ -1,33 +1,43 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Pressable, Image, View, Text, StyleSheet} from 'react-native';
-import {Screen} from '../utils/screens';
+import {Image, View, Text, StyleSheet} from 'react-native';
 import {ICharacter} from '../interfaces';
 import {Colors} from '../utils/colors';
 
-const Character = ({character}: {character: ICharacter}) => {
-  const navigation = useNavigation();
+interface CharacterProps {
+  character: ICharacter;
+  simplified?: boolean;
+}
+
+const Character = ({character, simplified = false}: CharacterProps) => {
   return (
-    <Pressable
-      style={styles.itemContainer}
-      key={character.name}
-      onPress={() => {
-        navigation.navigate(Screen.CharacterDetails, {character});
-      }}>
-      <Image source={{uri: character.image}} style={styles.image} />
+    <View style={styles.itemContainer}>
+      <Image
+        source={{uri: character.image}}
+        style={simplified ? styles.smallImage : styles.image}
+      />
       <View style={styles.nameAndCount}>
         <Text style={styles.name}>{character.name}</Text>
-        <Text style={styles.episodeCount}>
-          {character.episode.length} Episodes
-        </Text>
+        {!simplified && (
+          <Text style={styles.episodeCount}>
+            {character.episode.length} Episodes
+          </Text>
+        )}
       </View>
-    </Pressable>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  container: {backgroundColor: Colors.primaryBackground},
+  smallImage: {width: 50, height: 50, borderRadius: 50},
+  image: {width: 80, height: 80, borderRadius: 50},
+  nameAndCount: {padding: 10},
+  name: {fontSize: 22, color: Colors.primary},
+  episodeCount: {fontSize: 18, color: Colors.inActive},
+  loading: {
+    textAlign: 'center',
     backgroundColor: Colors.primaryBackground,
+    color: Colors.label,
   },
   itemContainer: {
     flexDirection: 'row',
@@ -35,29 +45,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderTopWidth: 1,
     borderColor: Colors.separator,
-  },
-
-  image: {
-    width: 80,
-    height: 80,
-    borderRadius: 50,
-  },
-  nameAndCount: {
-    padding: 10,
-  },
-  name: {
-    fontSize: 22,
-
-    color: Colors.primary,
-  },
-  episodeCount: {
-    fontSize: 18,
-    color: Colors.inActive,
-  },
-  loading: {
-    textAlign: 'center',
-    backgroundColor: Colors.primaryBackground,
-    color: Colors.label,
   },
 });
 export default Character;

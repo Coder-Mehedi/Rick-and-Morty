@@ -10,6 +10,7 @@ import {useQuery} from '@apollo/client';
 import {GET_EPISODE} from '../graphql/query/getEpisode';
 import {useNavigation} from '@react-navigation/native';
 import {Screen} from '../utils/screens';
+import Character from '../components/Character';
 
 const EpisodeDetails = ({route}: {route: any}) => {
   const [episode, setEpisode] = useState<IEpisode>(route.params.episode);
@@ -71,10 +72,7 @@ const EpisodeDetails = ({route}: {route: any}) => {
                 characterId: character.id,
               });
             }}>
-            <EpisodeItem
-              episodeName={character.name}
-              date={character.created}
-            />
+            <Character character={character} simplified />
           </Pressable>
         ))}
       </ScrollView>
