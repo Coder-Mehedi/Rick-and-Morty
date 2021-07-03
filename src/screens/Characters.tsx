@@ -33,7 +33,6 @@ const Characters = () => {
   );
 };
 Characters.Character = ({character}: {character: ICharacter}) => {
-  console.log('character', character);
   const navigation = useNavigation();
   return (
     <>

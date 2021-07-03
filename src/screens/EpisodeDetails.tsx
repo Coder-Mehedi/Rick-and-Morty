@@ -1,22 +1,56 @@
-import React, {Fragment} from 'react';
-import {View, Image, StyleSheet, ScrollView} from 'react-native';
+import React, {Fragment, useState} from 'react';
+import {StyleSheet, ScrollView, Text, View, Pressable} from 'react-native';
 import {IEpisode} from '../interfaces';
 import {Colors} from '../utils/colors';
 import EpisodeItem from '../components/EpisodeItem';
 import InfoItem from '../components/InfoItem';
 import ScreenHeadText from '../components/ScreenHeadText';
 import SectionText from '../components/SectionText';
+import {useQuery} from '@apollo/client';
+import {GET_EPISODE} from '../graphql/query/getEpisode';
+import {useNavigation} from '@react-navigation/native';
+import {Screen} from '../utils/screens';
 
 const EpisodeDetails = ({route}: {route: any}) => {
-  const episode: IEpisode = route.params.episode;
+  const [episode, setEpisode] = useState<IEpisode>(route.params.episode);
+  const episodeId: string = route.params.episodeId;
+
+  const navigation = useNavigation();
+
+  const {loading} = useQuery(GET_EPISODE, {
+    variables: {id: episodeId},
+    skip: !episodeId,
+    onCompleted: data => {
+      console.table(data.episode.name);
+      setEpisode(data.episode);
+    },
+    onError: error => {
+      console.log('error', error);
+    },
+  });
+
+  if (loading)
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>Loading ...</Text>
+      </View>
+    );
 
   const infoToShow = [
-    {label: 'Name', value: episode.name, icon: 'info', id: '1'},
-    {label: 'Air Date', value: episode.air_date, icon: 'calendar-alt', id: '2'},
-    {label: 'Code', value: episode.episode, icon: 'qrcode', id: '3'},
+    {label: 'Name', value: episode?.name, icon: 'info', id: '1'},
+    {
+      label: 'Air Date',
+      value: episode?.air_date,
+      icon: 'calendar-alt',
+      id: '2',
+    },
+    {label: 'Code', value: episode?.episode, icon: 'qrcode', id: '3'},
   ];
   return (
-    <Fragment>
+    <View
+      style={{
+        backgroundColor: Colors.secondaryBackground,
+      }}>
       <ScreenHeadText>Episode Details</ScreenHeadText>
       <ScrollView>
         <SectionText>Info</SectionText>
@@ -29,15 +63,22 @@ const EpisodeDetails = ({route}: {route: any}) => {
           />
         ))}
         <SectionText>Characters</SectionText>
-        {episode.characters.map(character => (
-          <EpisodeItem
-            key={character.name}
-            episodeName={character.name}
-            date={character.created}
-          />
+        {episode?.characters.map((character, index) => (
+          <Pressable
+            key={index}
+            onPress={() => {
+              navigation.navigate(Screen.CharacterDetails, {
+                characterId: character.id,
+              });
+            }}>
+            <EpisodeItem
+              episodeName={character.name}
+              date={character.created}
+            />
+          </Pressable>
         ))}
       </ScrollView>
-    </Fragment>
+    </View>
   );
 };
 
