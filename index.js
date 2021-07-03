@@ -3,10 +3,11 @@ import App from './src/App';
 import {name as appName} from './app.json';
 import React from 'react';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import {API_URL} from '@env';
 
 // Initialize Apollo Client
 const client = new ApolloClient({
-  uri: 'https://rickandmortyapi.com/graphql',
+  uri: API_URL,
   cache: new InMemoryCache(),
 });
 

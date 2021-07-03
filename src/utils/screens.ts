@@ -1,7 +1,7 @@
 export enum Screen {
   Characters = 'Characters',
-  CharacterDetails = 'CharacterDetails',
+  CharacterDetails = 'Character Details',
   Episodes = 'Episodes',
-  EpisodeDetails = 'EpisodeDetails',
+  EpisodeDetails = 'Episode Details',
   Locations = 'Locations',
 }
