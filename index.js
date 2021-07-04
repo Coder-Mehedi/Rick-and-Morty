@@ -2,17 +2,11 @@ import {AppRegistry} from 'react-native';
 import App from './src/App';
 import {name as appName} from './app.json';
 import React from 'react';
-import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
-import {API_URL} from '@env';
-
-// Initialize Apollo Client
-const client = new ApolloClient({
-  uri: API_URL,
-  cache: new InMemoryCache(),
-});
+import {ApolloProvider} from '@apollo/client';
+import apolloClient from './config/apolloGraphql';
 
 const RootApp = () => (
-  <ApolloProvider client={client}>
+  <ApolloProvider client={apolloClient}>
     <App />
   </ApolloProvider>
 );
