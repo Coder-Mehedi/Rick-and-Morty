@@ -1,10 +1,10 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {Screen} from '../utils/screens';
-import {EpisodesProvider} from '../components/_context/episodesContext';
-import Episodes from '../screens/Episodes';
-import EpisodeDetails from '../screens/EpisodeDetails';
-import CharacterDetails from '../screens/CharacterDetails';
+import {Screen} from 'utils/screens';
+import {EpisodesProvider} from 'components/_context/episodesContext';
+import Episodes from 'screens/Episodes';
+import EpisodeDetails from 'screens/EpisodeDetails';
+import CharacterDetails from 'screens/CharacterDetails';
 
 const Stack = createStackNavigator();
 

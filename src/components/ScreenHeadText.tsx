@@ -1,6 +1,6 @@
 import React, {ReactChild} from 'react';
 import {StyleSheet, Text} from 'react-native';
-import {Colors} from '../utils/colors';
+import {Colors} from 'utils/colors';
 
 const ScreenHeadText = ({children}: {children: ReactChild}) => {
   return <Text style={styles.heading}>{children}</Text>;

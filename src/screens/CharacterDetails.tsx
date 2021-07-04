@@ -7,14 +7,14 @@ import {
   Pressable,
   Text,
 } from 'react-native';
-import {ICharacter, IEpisode} from '../interfaces';
-import {Colors} from '../utils/colors';
-import EpisodeItem from '../components/EpisodeItem';
-import InfoItem from '../components/InfoItem';
-import ScreenHeadText from '../components/ScreenHeadText';
-import SectionText from '../components/SectionText';
+import {IEpisode} from 'interfaces';
+import {Colors} from 'utils/colors';
+import EpisodeItem from 'components/EpisodeItem';
+import InfoItem from 'components/InfoItem';
+import ScreenHeadText from 'components/ScreenHeadText';
+import SectionText from 'components/SectionText';
 import {useNavigation} from '@react-navigation/native';
-import {Screen} from '../utils/screens';
+import {Screen} from 'utils/screens';
 import {GET_CHARACTER} from '../graphql/query/getCharacter';
 import {useQuery} from '@apollo/client';
 

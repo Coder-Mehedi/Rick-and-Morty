@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, FlatList, Pressable} from 'react-native';
-import ScreenHeadText from '../components/ScreenHeadText';
-import {useEpisodes} from '../components/_context/episodesContext';
-import {IEpisode} from '../interfaces';
-import EpisodeItem from '../components/EpisodeItem';
+import ScreenHeadText from 'components/ScreenHeadText';
+import {useEpisodes} from 'components/_context/episodesContext';
+import {IEpisode} from 'interfaces';
+import EpisodeItem from 'components/EpisodeItem';
 import {useNavigation} from '@react-navigation/native';
-import {Screen} from '../utils/screens';
-import {Colors} from '../utils/colors';
+import {Screen} from 'utils/screens';
+import {Colors} from 'utils/colors';
 
 const Episodes = () => {
   const navigation = useNavigation();

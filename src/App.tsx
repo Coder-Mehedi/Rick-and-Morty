@@ -1,12 +1,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import CharactersRoute from './routes/Characters';
+import CharactersRoute from 'routes/Characters';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {Colors} from './utils/colors';
-import {Screen} from './utils/screens';
-import EpisodesRoute from './routes/Episodes';
-import LocationsRoute from './routes/Locations';
+import {Colors} from 'utils/colors';
+import {Screen} from 'utils/screens';
+import EpisodesRoute from 'routes/Episodes';
+import LocationsRoute from 'routes/Locations';
 
 const Tab = createMaterialBottomTabNavigator();
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
-import SectionText from '../components/SectionText';
-import ScreenHeadText from '../components/ScreenHeadText';
-import InfoItem from '../components/InfoItem';
+import SectionText from 'components/SectionText';
+import ScreenHeadText from 'components/ScreenHeadText';
+import InfoItem from 'components/InfoItem';
 
 function Locations() {
   return (

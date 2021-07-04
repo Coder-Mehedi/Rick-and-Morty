@@ -1,6 +1,6 @@
 import {useQuery} from '@apollo/client';
+import {GET_CHARACTERS} from 'graphql/query/getCharacters';
 import React, {createContext, useContext, useState} from 'react';
-import {GET_CHARACTERS} from '../../graphql/query/getCharacters';
 
 const CharactersContext = createContext({
   data: null,

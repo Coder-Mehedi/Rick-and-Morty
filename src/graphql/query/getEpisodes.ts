@@ -17,6 +17,7 @@ export const GET_EPISODES = gql`
         characters {
           id
           name
+          image
         }
       }
     }
