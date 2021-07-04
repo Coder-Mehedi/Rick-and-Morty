@@ -1,7 +1,6 @@
 import React from 'react';
 import {FlatList, Pressable, View} from 'react-native';
-import EpisodeItem from 'components/EpisodeItem';
-import {IEpisode, ILocation} from 'interfaces';
+import {ILocation} from 'interfaces';
 import {Colors} from 'utils/colors';
 import {Screen} from 'utils/screens';
 import {useNavigation} from '@react-navigation/native';

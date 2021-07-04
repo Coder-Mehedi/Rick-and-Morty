@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, FlatList, Pressable} from 'react-native';
-import ScreenHeadText from 'components/ScreenHeadText';
 import {useEpisodes} from 'components/_context/episodesContext';
 import {IEpisode} from 'interfaces';
 import EpisodeItem from 'components/EpisodeItem';

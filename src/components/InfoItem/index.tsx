@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from 'utils/colors';
+import styles from './styles';
 
 interface InfoItemProps {
   iconName: string;
@@ -20,31 +21,5 @@ const InfoItem = ({iconName, label, value}: InfoItemProps) => {
     </View>
   );
 };
-const styles = StyleSheet.create({
-  itemContainer: {
-    flexDirection: 'row',
-    backgroundColor: Colors.secondaryBackground,
-    padding: 10,
-    paddingTop: 20,
-    paddingBottom: 20,
-    borderBottomColor: Colors.separator,
-    borderBottomWidth: 1,
-  },
-  iconContainer: {
-    width: 35,
-    alignItems: 'center',
-  },
-  label: {
-    color: Colors.label,
-    fontSize: 20,
-    marginLeft: 10,
-  },
-  value: {
-    marginLeft: 'auto',
-    color: Colors.focused,
-    fontSize: 20,
-    maxWidth: '60%',
-  },
-});
 
 export default InfoItem;

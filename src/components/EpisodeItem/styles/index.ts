@@ -1,22 +1,7 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Colors} from 'utils/colors';
 
-interface EpisodeItemProps {
-  episodeName: string;
-  date: string;
-}
-
-const EpisodeItem = ({episodeName, date}: EpisodeItemProps) => {
-  return (
-    <View style={styles.itemContainer}>
-      <Text style={styles.episodeName}>{episodeName}</Text>
-      <Text style={styles.date}>{date}</Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     backgroundColor: Colors.secondaryBackground,
@@ -38,4 +23,3 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
   },
 });
-export default EpisodeItem;
