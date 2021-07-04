@@ -47,35 +47,32 @@ const EpisodeDetails = ({route}: {route: any}) => {
     {label: 'Code', value: episode?.episode, icon: 'qrcode', id: '3'},
   ];
   return (
-    <View
+    <ScrollView
       style={{
         backgroundColor: Colors.secondaryBackground,
       }}>
-      <ScreenHeadText>Episode Details</ScreenHeadText>
-      <ScrollView>
-        <SectionText>Info</SectionText>
-        {infoToShow.map(info => (
-          <InfoItem
-            key={info.label}
-            iconName={info.icon}
-            label={info.label}
-            value={info.value}
-          />
-        ))}
-        <SectionText>Characters</SectionText>
-        {episode?.characters.map((character, index) => (
-          <Pressable
-            key={index}
-            onPress={() => {
-              navigation.navigate(Screen.CharacterDetails, {
-                characterId: character.id,
-              });
-            }}>
-            <Character character={character} simplified />
-          </Pressable>
-        ))}
-      </ScrollView>
-    </View>
+      <SectionText>Info</SectionText>
+      {infoToShow.map(info => (
+        <InfoItem
+          key={info.label}
+          iconName={info.icon}
+          label={info.label}
+          value={info.value}
+        />
+      ))}
+      <SectionText>Characters</SectionText>
+      {episode?.characters.map((character, index) => (
+        <Pressable
+          key={index}
+          onPress={() => {
+            navigation.navigate(Screen.CharacterDetails, {
+              characterId: character.id,
+            });
+          }}>
+          <Character character={character} simplified />
+        </Pressable>
+      ))}
+    </ScrollView>
   );
 };
 
