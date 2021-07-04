@@ -7,38 +7,62 @@ import {Colors} from 'utils/colors';
 import {Screen} from 'utils/screens';
 import EpisodesRoute from 'routes/Episodes';
 import LocationsRoute from 'routes/Locations';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {Text} from 'react-native';
+import CustomDrawerContent from 'components/CustomDrawerContent';
 
 const Tab = createMaterialBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused}) => {
-            let iconName = '';
-            let size = 19;
-            if (route.name === Screen.Characters) iconName = 'id-card';
-            if (route.name === Screen.Episodes) iconName = 'tv';
-            if (route.name === Screen.Locations) iconName = 'map';
-            return (
-              <FontAwesome5
-                name={iconName}
-                size={size}
-                color={focused ? Colors.focused : Colors.inActive}
-              />
-            );
-          },
-        })}
-        activeColor={Colors.focused}
-        inactiveColor={Colors.inActive}
-        barStyle={{backgroundColor: Colors.secondaryBackground}}>
-        <Tab.Screen name={Screen.Characters} component={CharactersRoute} />
-        <Tab.Screen name={Screen.Episodes} component={EpisodesRoute} />
-        <Tab.Screen name={Screen.Locations} component={LocationsRoute} />
-      </Tab.Navigator>
+      <Drawer.Navigator
+        drawerContent={props => <CustomDrawerContent {...props} />}
+        initialRouteName="Home"
+        drawerStyle={{
+          backgroundColor: Colors.secondaryBackground,
+          // width: 240,
+          margin: 0,
+        }}
+        drawerContentOptions={{
+          activeTintColor: Colors.focused,
+          inactiveTintColor: Colors.inActive,
+          labelStyle: {marginLeft: -20},
+        }}>
+        <Drawer.Screen
+          options={{
+            drawerIcon: props => <DrawerIcon {...props} iconName="id-card" />,
+          }}
+          name={Screen.Characters}
+          component={CharactersRoute}
+        />
+        <Drawer.Screen
+          name={Screen.Episodes}
+          component={EpisodesRoute}
+          options={{
+            drawerIcon: props => <DrawerIcon {...props} iconName="tv" />,
+          }}
+        />
+        <Drawer.Screen
+          name={Screen.Locations}
+          component={LocationsRoute}
+          options={{
+            drawerIcon: props => <DrawerIcon {...props} iconName="map" />,
+          }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
 
+const DrawerIcon = ({focused, size, iconName}: any) => {
+  return (
+    <FontAwesome5
+      name={iconName}
+      size={size}
+      color={focused ? Colors.focused : Colors.inActive}
+    />
+  );
+};
 export default App;

@@ -27,7 +27,6 @@ const Characters = () => {
 
   return (
     <Fragment>
-      <ScreenHeadText>Characters</ScreenHeadText>
       <FlatList
         onEndReached={fetchMoreData}
         style={styles.container}

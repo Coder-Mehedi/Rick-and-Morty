@@ -14,7 +14,6 @@ const Episodes = () => {
   const {data, fetchMoreData} = useEpisodes();
   return (
     <View style={{backgroundColor: Colors.secondaryBackground, flex: 1}}>
-      <ScreenHeadText>Episodes</ScreenHeadText>
       <FlatList
         keyExtractor={(_, index: number) => index.toString()}
         data={data}
