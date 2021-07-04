@@ -8,7 +8,7 @@ interface CharacterProps {
   simplified?: boolean;
 }
 
-const Character = ({character, simplified = false}: CharacterProps) => {
+const CharacterItem = ({character, simplified = false}: CharacterProps) => {
   return (
     <View style={styles.itemContainer}>
       <Image
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
     borderColor: Colors.separator,
   },
 });
-export default Character;
+export default CharacterItem;

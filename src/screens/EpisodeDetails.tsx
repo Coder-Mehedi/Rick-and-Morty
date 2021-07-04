@@ -3,13 +3,12 @@ import {StyleSheet, ScrollView, Text, View, Pressable} from 'react-native';
 import {IEpisode} from 'interfaces';
 import {Colors} from 'utils/colors';
 import InfoItem from 'components/InfoItem';
-import ScreenHeadText from 'components/ScreenHeadText';
 import SectionText from 'components/SectionText';
 import {useQuery} from '@apollo/client';
 import {GET_EPISODE} from '../graphql/query/getEpisode';
 import {useNavigation} from '@react-navigation/native';
 import {Screen} from 'utils/screens';
-import Character from 'components/Character';
+import CharacterItem from 'components/CharacterItem';
 
 const EpisodeDetails = ({route}: {route: any}) => {
   const [episode, setEpisode] = useState<IEpisode>(route.params.episode);
@@ -69,7 +68,7 @@ const EpisodeDetails = ({route}: {route: any}) => {
               characterId: character.id,
             });
           }}>
-          <Character character={character} simplified />
+          <CharacterItem character={character} simplified />
         </Pressable>
       ))}
     </ScrollView>

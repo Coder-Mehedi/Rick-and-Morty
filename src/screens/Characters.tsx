@@ -1,11 +1,10 @@
 import React, {Fragment} from 'react';
 import {StyleSheet, FlatList, Pressable, Image, View} from 'react-native';
 import {Colors} from 'utils/colors';
-import ScreenHeadText from 'components/ScreenHeadText';
 import {useCharacters} from 'components/_context/charactersContext';
 import {useNavigation} from '@react-navigation/native';
 import {Screen} from 'utils/screens';
-import Character from 'components/Character';
+import CharacterItem from 'components/CharacterItem';
 import {ICharacter} from 'interfaces';
 
 const Characters = () => {
@@ -37,7 +36,7 @@ const Characters = () => {
             onPress={() => {
               navigation.navigate(Screen.CharacterDetails, {character});
             }}>
-            <Character character={character} />
+            <CharacterItem character={character} />
           </Pressable>
         )}
       />

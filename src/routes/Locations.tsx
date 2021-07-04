@@ -7,6 +7,7 @@ import {Colors} from 'utils/colors';
 import {navigatorHeaderOptions} from 'utils/navigatorHeaderOptions';
 import {LocationsProvider} from 'components/_context/locationsContext';
 import LocationDetails from 'screens/LocationDetails';
+import CharacterDetails from 'screens/CharacterDetails';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,10 @@ const LocationsRoute = ({navigation}: any) => {
         <Stack.Screen
           name={Screen.LocationsDetails}
           component={LocationDetails}
+        />
+        <Stack.Screen
+          name={Screen.CharacterDetails}
+          component={CharacterDetails}
         />
       </Stack.Navigator>
     </LocationsProvider>

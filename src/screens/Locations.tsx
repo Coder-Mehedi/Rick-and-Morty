@@ -1,11 +1,12 @@
 import React from 'react';
 import {FlatList, Pressable, View} from 'react-native';
 import EpisodeItem from 'components/EpisodeItem';
-import {IEpisode} from 'interfaces';
+import {IEpisode, ILocation} from 'interfaces';
 import {Colors} from 'utils/colors';
 import {Screen} from 'utils/screens';
 import {useNavigation} from '@react-navigation/native';
 import {useLocations} from 'components/_context/locationsContext';
+import LocationItem from 'components/LocationItem';
 
 function Locations() {
   const navigation = useNavigation();
@@ -20,12 +21,15 @@ function Locations() {
         keyExtractor={(_, index: number) => index.toString()}
         data={data}
         onEndReached={fetchMoreData}
-        renderItem={({item: location}: {item: IEpisode}) => (
+        renderItem={({item: location}: {item: ILocation}) => (
           <Pressable
             onPress={() => {
               navigation.navigate(Screen.LocationsDetails, {location});
             }}>
-            <EpisodeItem date={location.air_date} episodeName={location.name} />
+            <LocationItem
+              residentCount={location.residents.length}
+              locationName={location.name}
+            />
           </Pressable>
         )}
       />
