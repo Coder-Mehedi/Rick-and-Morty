@@ -1,5 +1,12 @@
 import React, {Fragment} from 'react';
-import {StyleSheet, FlatList, Pressable, Image, View} from 'react-native';
+import {
+  StyleSheet,
+  FlatList,
+  Pressable,
+  Image,
+  View,
+  Dimensions,
+} from 'react-native';
 import {Colors} from 'utils/colors';
 import {useCharacters} from 'components/_context/charactersContext';
 import {useNavigation} from '@react-navigation/native';
@@ -8,21 +15,8 @@ import CharacterItem from 'components/CharacterItem';
 import {ICharacter} from 'interfaces';
 
 const Characters = () => {
-  const {data, loading, fetchMoreData} = useCharacters();
+  const {data, fetchMoreData} = useCharacters();
   const navigation = useNavigation();
-
-  if (loading && !data)
-    return (
-      <View
-        style={{backgroundColor: '#d7dae0', flex: 1, justifyContent: 'center'}}>
-        <Image
-          style={{height: 300, width: '100%'}}
-          source={{
-            uri: 'https://cdn.dribbble.com/users/870371/screenshots/5172260/theskeletoons-rick2.png',
-          }}
-        />
-      </View>
-    );
 
   return (
     <Fragment>
