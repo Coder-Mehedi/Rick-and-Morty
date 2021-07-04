@@ -28,7 +28,7 @@ const EpisodesRoute = ({navigation}: any) => {
                 size={25}
                 color={Colors.focused}
                 onPress={() => navigation.openDrawer()}
-                style={{paddingLeft: 10}}
+                style={{left: 20}}
               />
             ),
           }}

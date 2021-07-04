@@ -4,4 +4,5 @@ export enum Screen {
   Episodes = 'Episodes',
   EpisodeDetails = 'Episode Details',
   Locations = 'Locations',
+  LocationsDetails = 'Locations Details',
 }
