@@ -11,10 +11,10 @@ const CharactersContext = createContext({
 function CharactersProvider({children}: any) {
   const [info, setInfo] = useState<any>(null);
   const [data, setData] = useState<any>(null);
-  const [nextPage, setNextPage] = useState(1);
+  const [page, setPage] = useState(1);
 
   const {loading} = useQuery(GET_CHARACTERS, {
-    variables: {page: nextPage},
+    variables: {page},
     onCompleted: resData => {
       setInfo(resData.characters.info);
       if (data?.length)
@@ -24,7 +24,7 @@ function CharactersProvider({children}: any) {
   });
 
   const fetchMoreData = () => {
-    if (info.next) setNextPage(info.next);
+    if (info.next) setPage(info.next);
   };
 
   return (
