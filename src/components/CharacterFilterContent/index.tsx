@@ -1,10 +1,10 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useRef} from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import {useCharacters} from 'components/_context/charactersContext';
+import React from 'react';
+import {View, Button} from 'react-native';
 import {List} from 'react-native-paper';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Colors} from 'utils/colors';
-import {useCharacters} from './_context/charactersContext';
+import styles from './styles';
 
 const CharacterFilterContent = () => {
   const {filter, setFilter, resetFilter} = useCharacters();
@@ -94,13 +94,5 @@ const CharacterFilterContent = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  listSection: {backgroundColor: Colors.primaryBackground, flex: 1},
-  listSectionTitle: {color: Colors.label},
-  listAccordion: {backgroundColor: Colors.secondaryBackground},
-  listAccordionTitle: {color: Colors.primary},
-  listItem: {color: Colors.label},
-});
 
 export default CharacterFilterContent;

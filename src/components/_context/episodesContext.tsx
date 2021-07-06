@@ -6,32 +6,38 @@ const EpisodesContext = createContext({
   data: [],
   loading: false,
   fetchMoreData: () => {},
+  searchText: '',
+  setSearchText: (searchText: string) => {},
 });
 
 function EpisodesProvider({children}: any) {
-  const [info, setInfo] = useState<any>(null);
-  const [data, setData] = useState<any>(null);
-  const [nextPage, setNextPage] = useState(1);
+  const [searchText, setSearchText] = useState('');
 
-  const {loading} = useQuery(GET_EPISODES, {
-    variables: {page: nextPage},
-    onCompleted: resData => {
-      setInfo(resData.episodes.info);
-      if (data?.length) return setData([...data, ...resData.episodes.results]);
-      setData(resData.episodes.results);
-    },
+  const {data, loading, fetchMore} = useQuery(GET_EPISODES, {
+    variables: {page: 1, filter: {name: searchText}},
   });
 
   const fetchMoreData = () => {
-    if (info.next) setNextPage(info.next);
+    fetchMore({
+      variables: {page: data.episodes.info.next},
+      updateQuery: (prev: any, {fetchMoreResult}: any) => {
+        fetchMoreResult.episodes.results = [
+          ...prev.episodes.results,
+          ...fetchMoreResult.episodes.results,
+        ];
+        return fetchMoreResult;
+      },
+    });
   };
 
   return (
     <EpisodesContext.Provider
       value={{
-        data,
+        data: data?.episodes.results,
         loading,
         fetchMoreData,
+        searchText,
+        setSearchText,
       }}>
       {children}
     </EpisodesContext.Provider>

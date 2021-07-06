@@ -13,11 +13,16 @@ import CharacterItem from 'components/CharacterItem';
 import {ICharacter} from 'interfaces';
 import SearchAndFilter from 'components/SearchAndFilter';
 import CharacterFilterContent from 'components/CharacterFilterContent';
+import Loading from 'components/loading';
 
 const Characters = () => {
-  const {data, fetchMoreData, searchText, setSearchText} = useCharacters();
+  const {data, loading, fetchMoreData, searchText, setSearchText} =
+    useCharacters();
   const navigation = useNavigation();
   const drawer = useRef<any>(null);
+
+  if (loading) return <Loading />;
+
   return (
     <DrawerLayoutAndroid
       style={styles.container}
@@ -50,6 +55,5 @@ const Characters = () => {
 
 const styles = StyleSheet.create({
   container: {backgroundColor: Colors.primaryBackground},
-  white: {color: 'white'},
 });
 export default Characters;

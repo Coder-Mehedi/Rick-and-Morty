@@ -6,16 +6,21 @@ import {Screen} from 'utils/screens';
 import {useNavigation} from '@react-navigation/native';
 import {useLocations} from 'components/_context/locationsContext';
 import LocationItem from 'components/LocationItem';
+import SearchAndFilter from 'components/SearchAndFilter';
 
 function Locations() {
   const navigation = useNavigation();
 
-  const {data, loading, fetchMoreData} = useLocations();
-  console.log(loading);
-  if (data) console.log(data);
+  const {data, loading, fetchMoreData, searchText, setSearchText} =
+    useLocations();
 
   return (
     <View style={{backgroundColor: Colors.secondaryBackground, flex: 1}}>
+      <SearchAndFilter
+        searchText={searchText}
+        setSearchText={setSearchText}
+        noFilter
+      />
       <FlatList
         keyExtractor={(_, index: number) => index.toString()}
         data={data}

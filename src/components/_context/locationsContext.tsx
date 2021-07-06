@@ -6,32 +6,38 @@ const LocationsContext = createContext({
   data: [],
   loading: false,
   fetchMoreData: () => {},
+  searchText: '',
+  setSearchText: (searchText: string) => {},
 });
 
 function LocationsProvider({children}: any) {
-  const [info, setInfo] = useState<any>(null);
-  const [data, setData] = useState<any>(null);
-  const [nextPage, setNextPage] = useState(1);
+  const [searchText, setSearchText] = useState('');
 
-  const {loading} = useQuery(GET_LOCATIONS, {
-    variables: {page: nextPage},
-    onCompleted: resData => {
-      setInfo(resData.locations.info);
-      if (data?.length) return setData([...data, ...resData.locations.results]);
-      setData(resData.locations.results);
-    },
+  const {data, loading, fetchMore} = useQuery(GET_LOCATIONS, {
+    variables: {page: 1, filter: {name: searchText}},
   });
 
   const fetchMoreData = () => {
-    if (info.next) setNextPage(info.next);
+    fetchMore({
+      variables: {page: data.locations.info.next},
+      updateQuery: (prev: any, {fetchMoreResult}: any) => {
+        fetchMoreResult.locations.results = [
+          ...prev.locations.results,
+          ...fetchMoreResult.locations.results,
+        ];
+        return fetchMoreResult;
+      },
+    });
   };
 
   return (
     <LocationsContext.Provider
       value={{
-        data,
+        data: data?.locations.results,
         loading,
         fetchMoreData,
+        searchText,
+        setSearchText,
       }}>
       {children}
     </LocationsContext.Provider>

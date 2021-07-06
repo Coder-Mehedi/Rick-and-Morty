@@ -9,6 +9,7 @@ import {GET_EPISODE} from '../graphql/query/getEpisode';
 import {useNavigation} from '@react-navigation/native';
 import {Screen} from 'utils/screens';
 import CharacterItem from 'components/CharacterItem';
+import Loading from 'components/loading';
 
 const EpisodeDetails = ({route}: {route: any}) => {
   const [episode, setEpisode] = useState<IEpisode>(route.params.episode);
@@ -28,12 +29,7 @@ const EpisodeDetails = ({route}: {route: any}) => {
     },
   });
 
-  if (loading)
-    return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Loading ...</Text>
-      </View>
-    );
+  if (loading) return <Loading />;
 
   const infoToShow = [
     {label: 'Name', value: episode?.name, icon: 'info', id: '1'},

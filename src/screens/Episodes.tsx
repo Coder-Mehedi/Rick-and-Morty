@@ -6,13 +6,24 @@ import EpisodeItem from 'components/EpisodeItem';
 import {useNavigation} from '@react-navigation/native';
 import {Screen} from 'utils/screens';
 import {Colors} from 'utils/colors';
+import SearchAndFilter from 'components/SearchAndFilter';
+import Loading from 'components/loading';
 
 const Episodes = () => {
   const navigation = useNavigation();
 
-  const {data, fetchMoreData} = useEpisodes();
+  const {data, loading, fetchMoreData, searchText, setSearchText} =
+    useEpisodes();
+
+  if (loading) return <Loading />;
+
   return (
     <View style={{backgroundColor: Colors.secondaryBackground, flex: 1}}>
+      <SearchAndFilter
+        searchText={searchText}
+        setSearchText={setSearchText}
+        noFilter
+      />
       <FlatList
         keyExtractor={(_, index: number) => index.toString()}
         data={data}
