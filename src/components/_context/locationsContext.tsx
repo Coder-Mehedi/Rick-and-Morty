@@ -21,10 +21,10 @@ function LocationsProvider({children}: any) {
     fetchMore({
       variables: {page: data.locations.info.next},
       updateQuery: (prev: any, {fetchMoreResult}: any) => {
-        fetchMoreResult.locations.results = [
+        fetchMoreResult.locations.results = new Set([
           ...prev.locations.results,
           ...fetchMoreResult.locations.results,
-        ];
+        ]);
         return fetchMoreResult;
       },
     });

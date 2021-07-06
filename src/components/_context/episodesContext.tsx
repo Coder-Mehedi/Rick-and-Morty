@@ -21,10 +21,10 @@ function EpisodesProvider({children}: any) {
     fetchMore({
       variables: {page: data.episodes.info.next},
       updateQuery: (prev: any, {fetchMoreResult}: any) => {
-        fetchMoreResult.episodes.results = [
+        fetchMoreResult.episodes.results = new Set([
           ...prev.episodes.results,
           ...fetchMoreResult.episodes.results,
-        ];
+        ]);
         return fetchMoreResult;
       },
     });

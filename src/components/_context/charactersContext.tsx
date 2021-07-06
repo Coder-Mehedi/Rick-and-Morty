@@ -42,10 +42,10 @@ function CharactersProvider({children}: any) {
     fetchMore({
       variables: {page: data.characters.info.next},
       updateQuery: (prev: any, {fetchMoreResult}: any) => {
-        fetchMoreResult.characters.results = [
+        fetchMoreResult.characters.results = new Set([
           ...prev.characters.results,
           ...fetchMoreResult.characters.results,
-        ];
+        ]);
         return fetchMoreResult;
       },
     });
