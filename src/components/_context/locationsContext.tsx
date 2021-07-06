@@ -1,5 +1,5 @@
 import {useQuery} from '@apollo/client';
-import {GET_LOCATIONS} from 'graphql/query/getLocations';
+import GET_LOCATIONS from 'graphql/query/getLocations.gql';
 import React, {createContext, useContext, useState} from 'react';
 
 const LocationsContext = createContext({

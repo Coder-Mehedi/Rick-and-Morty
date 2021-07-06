@@ -15,8 +15,6 @@ function Locations() {
   const {data, loading, fetchMoreData, searchText, setSearchText} =
     useLocations();
 
-  if (loading) return <Loading />;
-
   return (
     <View style={{backgroundColor: Colors.secondaryBackground, flex: 1}}>
       <SearchAndFilter

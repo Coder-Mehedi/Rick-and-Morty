@@ -1,5 +1,5 @@
 import {useQuery} from '@apollo/client';
-import {GET_CHARACTERS} from 'graphql/query/getCharacters';
+import GET_CHARACTERS from 'graphql/query/getCharacters.gql';
 import React, {createContext, useContext, useState} from 'react';
 
 interface Filter {
@@ -35,6 +35,7 @@ function CharactersProvider({children}: any) {
   });
   const {data, loading, fetchMore} = useQuery(GET_CHARACTERS, {
     variables: {page: 1, filter: {name: searchText, ...filter}},
+    onError: err => console.log(err),
   });
 
   const fetchMoreData = () => {

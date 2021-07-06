@@ -15,8 +15,9 @@ import ScreenHeadText from 'components/ScreenHeadText';
 import SectionText from 'components/SectionText';
 import {useNavigation} from '@react-navigation/native';
 import {Screen} from 'utils/screens';
-import {GET_CHARACTER} from '../graphql/query/getCharacter';
+import GET_CHARACTER from '../graphql/query/getCharacter.gql';
 import {useQuery} from '@apollo/client';
+import Loading from 'components/loading';
 
 const CharacterDetails = ({route}: {route: any}) => {
   const [character, setCharacter] = useState(route.params.character);
@@ -35,12 +36,7 @@ const CharacterDetails = ({route}: {route: any}) => {
     },
   });
 
-  if (loading)
-    return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Loading ...</Text>
-      </View>
-    );
+  if (loading) return <Loading />;
 
   const infoToShow = [
     {label: 'Species', value: character?.species, icon: 'paw', id: '1'},

@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "clean-start": "react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
@@ -39,6 +40,7 @@
     "@types/react-native-vector-icons": "^6.4.7",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^26.6.3",
+    "babel-plugin-import-graphql": "^2.8.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.14.0",
     "jest": "^26.6.3",

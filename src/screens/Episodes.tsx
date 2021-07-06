@@ -15,8 +15,6 @@ const Episodes = () => {
   const {data, loading, fetchMoreData, searchText, setSearchText} =
     useEpisodes();
 
-  if (loading) return <Loading />;
-
   return (
     <View style={{backgroundColor: Colors.secondaryBackground, flex: 1}}>
       <SearchAndFilter

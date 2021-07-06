@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, Text, View, Pressable} from 'react-native';
+import {ScrollView, Pressable} from 'react-native';
 import {ILocation} from 'interfaces';
 import {Colors} from 'utils/colors';
 import InfoItem from 'components/InfoItem';
@@ -8,7 +8,8 @@ import {useQuery} from '@apollo/client';
 import {useNavigation} from '@react-navigation/native';
 import {Screen} from 'utils/screens';
 import CharacterItem from 'components/CharacterItem';
-import {GET_LOCATION} from 'graphql/query/getLocation';
+import GET_LOCATION from 'graphql/query/getLocation.gql';
+import Loading from 'components/loading';
 
 const LocationDetails = ({route}: {route: any}) => {
   const [location, setLocation] = useState<ILocation>(route.params.location);
@@ -27,12 +28,7 @@ const LocationDetails = ({route}: {route: any}) => {
     },
   });
 
-  if (loading)
-    return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Loading ...</Text>
-      </View>
-    );
+  if (loading) return <Loading />;
 
   const infoToShow = [
     {label: 'Name', value: location?.name, icon: 'info', id: '1'},

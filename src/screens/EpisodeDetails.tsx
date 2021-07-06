@@ -5,7 +5,7 @@ import {Colors} from 'utils/colors';
 import InfoItem from 'components/InfoItem';
 import SectionText from 'components/SectionText';
 import {useQuery} from '@apollo/client';
-import {GET_EPISODE} from '../graphql/query/getEpisode';
+import GET_EPISODE from '../graphql/query/getEpisode.gql';
 import {useNavigation} from '@react-navigation/native';
 import {Screen} from 'utils/screens';
 import CharacterItem from 'components/CharacterItem';

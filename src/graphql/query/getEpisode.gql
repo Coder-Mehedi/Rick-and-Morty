@@ -1,8 +1,10 @@
-import {gql} from '@apollo/client';
-
-export const GET_CHARACTER = gql`
-  query character($id: ID!) {
-    character(id: $id) {
+query episode($id: ID!) {
+  episode(id: $id) {
+    id
+    name
+    air_date
+    episode
+    characters {
       id
       name
       status
@@ -25,4 +27,4 @@ export const GET_CHARACTER = gql`
       }
     }
   }
-`;
+}
