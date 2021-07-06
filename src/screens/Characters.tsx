@@ -20,7 +20,7 @@ import {ICharacter} from 'interfaces';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const Characters = () => {
-  const {data, fetchMoreData} = useCharacters();
+  const {data, fetchMoreData, searchText, setSearchText} = useCharacters();
   const navigation = useNavigation();
 
   const drawer = useRef<any>(null);
@@ -44,7 +44,12 @@ const Characters = () => {
       drawerPosition="right"
       renderNavigationView={navigationView}>
       <View style={styles.inputContainer}>
-        <TextInput style={{padding: 15}} placeholder="Search..." />
+        <TextInput
+          style={{padding: 15}}
+          placeholder="Search..."
+          value={searchText}
+          onChangeText={(text: string) => setSearchText(text)}
+        />
         <FontAwesome5
           name="filter"
           size={25}

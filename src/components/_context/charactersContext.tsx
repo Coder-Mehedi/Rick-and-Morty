@@ -6,33 +6,37 @@ const CharactersContext = createContext({
   data: null,
   loading: false,
   fetchMoreData: () => {},
+  searchText: '',
+  setSearchText: (searchText: string) => {},
 });
 
 function CharactersProvider({children}: any) {
-  const [info, setInfo] = useState<any>(null);
-  const [data, setData] = useState<any>(null);
-  const [page, setPage] = useState(1);
-
-  const {loading} = useQuery(GET_CHARACTERS, {
-    variables: {page},
-    onCompleted: resData => {
-      setInfo(resData.characters.info);
-      if (data?.length)
-        return setData([...data, ...resData.characters.results]);
-      setData(resData.characters.results);
-    },
+  const [searchText, setSearchText] = useState('');
+  const {data, loading, fetchMore} = useQuery(GET_CHARACTERS, {
+    variables: {page: 1, filter: {name: searchText}},
   });
 
   const fetchMoreData = () => {
-    if (info.next) setPage(info.next);
+    fetchMore({
+      variables: {page: data.characters.info.next},
+      updateQuery: (prev: any, {fetchMoreResult}: any) => {
+        fetchMoreResult.characters.results = [
+          ...prev.characters.results,
+          ...fetchMoreResult.characters.results,
+        ];
+        return fetchMoreResult;
+      },
+    });
   };
 
   return (
     <CharactersContext.Provider
       value={{
-        data,
+        data: data?.characters.results,
         loading,
         fetchMoreData,
+        searchText,
+        setSearchText,
       }}>
       {children}
     </CharactersContext.Provider>
