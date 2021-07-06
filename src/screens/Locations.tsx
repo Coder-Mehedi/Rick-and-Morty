@@ -7,12 +7,15 @@ import {useNavigation} from '@react-navigation/native';
 import {useLocations} from 'components/_context/locationsContext';
 import LocationItem from 'components/LocationItem';
 import SearchAndFilter from 'components/SearchAndFilter';
+import Loading from 'components/loading';
 
 function Locations() {
   const navigation = useNavigation();
 
   const {data, loading, fetchMoreData, searchText, setSearchText} =
     useLocations();
+
+  if (loading) return <Loading />;
 
   return (
     <View style={{backgroundColor: Colors.secondaryBackground, flex: 1}}>

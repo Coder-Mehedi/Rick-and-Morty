@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, ScrollView, Text, View, Pressable} from 'react-native';
+import {ScrollView, Text, View, Pressable} from 'react-native';
 import {ILocation} from 'interfaces';
 import {Colors} from 'utils/colors';
 import InfoItem from 'components/InfoItem';
@@ -73,22 +73,5 @@ const LocationDetails = ({route}: {route: any}) => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: Colors.secondaryBackground,
-  },
-  name: {
-    fontSize: 20,
-    padding: 10,
-  },
-  image: {
-    width: 250,
-    height: 200,
-    borderRadius: 25,
-    margin: 15,
-  },
-});
 
 export default LocationDetails;

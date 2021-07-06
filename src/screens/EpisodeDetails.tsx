@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, ScrollView, Text, View, Pressable} from 'react-native';
+import {ScrollView, Pressable} from 'react-native';
 import {IEpisode} from 'interfaces';
 import {Colors} from 'utils/colors';
 import InfoItem from 'components/InfoItem';
@@ -21,7 +21,6 @@ const EpisodeDetails = ({route}: {route: any}) => {
     variables: {id: episodeId},
     skip: !episodeId,
     onCompleted: data => {
-      console.table(data.episode.name);
       setEpisode(data.episode);
     },
     onError: error => {
@@ -70,22 +69,5 @@ const EpisodeDetails = ({route}: {route: any}) => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: Colors.secondaryBackground,
-  },
-  name: {
-    fontSize: 20,
-    padding: 10,
-  },
-  image: {
-    width: 250,
-    height: 200,
-    borderRadius: 25,
-    margin: 15,
-  },
-});
 
 export default EpisodeDetails;
