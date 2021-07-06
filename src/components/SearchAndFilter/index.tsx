@@ -27,13 +27,15 @@ const SearchAndFilter = ({
       />
 
       {!noFilter && (
-        <FontAwesome5
-          name="filter"
-          size={25}
-          color={Colors.focused}
-          style={styles.filter}
-          onPress={() => drawer.current.openDrawer()}
-        />
+        <View>
+          <FontAwesome5
+            name="filter"
+            size={25}
+            color={Colors.focused}
+            style={styles.filter}
+            onPress={() => drawer.current.openDrawer()}
+          />
+        </View>
       )}
     </View>
   );

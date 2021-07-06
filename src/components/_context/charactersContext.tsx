@@ -1,6 +1,7 @@
 import {useQuery} from '@apollo/client';
 import GET_CHARACTERS from 'graphql/query/getCharacters.gql';
 import React, {createContext, useContext, useState} from 'react';
+import {useEffect} from 'react';
 
 interface Filter {
   status: string;
@@ -42,10 +43,10 @@ function CharactersProvider({children}: any) {
     fetchMore({
       variables: {page: data.characters.info.next},
       updateQuery: (prev: any, {fetchMoreResult}: any) => {
-        fetchMoreResult.characters.results = new Set([
+        fetchMoreResult.characters.results = [
           ...prev.characters.results,
           ...fetchMoreResult.characters.results,
-        ]);
+        ];
         return fetchMoreResult;
       },
     });
@@ -58,6 +59,13 @@ function CharactersProvider({children}: any) {
       gender: '',
     });
   };
+
+  useEffect(() => {
+    if (!searchText && Object.values(filter).some(f => f.length)) {
+      console.log('reset filter');
+      resetFilter();
+    }
+  }, [searchText]);
 
   return (
     <CharactersContext.Provider

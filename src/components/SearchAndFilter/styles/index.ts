@@ -11,5 +11,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     margin: 15,
+    justifyContent: 'space-between',
   },
 });
