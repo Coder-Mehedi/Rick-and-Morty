@@ -4,6 +4,7 @@ import {name as appName} from './app.json';
 import React from 'react';
 import {ApolloProvider} from '@apollo/client';
 import apolloClient from './config/apolloGraphql';
+import 'react-native-gesture-handler';
 
 const RootApp = () => (
   <ApolloProvider client={apolloClient}>
