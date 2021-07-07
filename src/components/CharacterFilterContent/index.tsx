@@ -33,7 +33,7 @@ const CharacterFilterContent = () => {
           style={styles.listAccordion}
           titleStyle={styles.listAccordionTitle}
           title="Status"
-          left={props => (
+          left={() => (
             <FontAwesome5 name="heartbeat" size={25} color={Colors.focused} />
           )}>
           <View style={{left: -30}}>
@@ -41,23 +41,23 @@ const CharacterFilterContent = () => {
               title="Alive"
               titleStyle={styles.listItem}
               onPress={() => filterStatus('Alive')}
-              left={props => (
+              left={() => (
                 <FontAwesome5 name="heart" size={25} color={Colors.focused} />
               )}
-              right={props => (filter.status === 'Alive' ? checkIcon : null)}
+              right={() => (filter.status === 'Alive' ? checkIcon : null)}
             />
             <List.Item
               title="Dead"
               titleStyle={styles.listItem}
               onPress={() => filterStatus('Dead')}
-              left={props => (
+              left={() => (
                 <FontAwesome5
                   name="heart-broken"
                   size={25}
                   color={Colors.focused}
                 />
               )}
-              right={props => (filter.status === 'Dead' ? checkIcon : null)}
+              right={() => (filter.status === 'Dead' ? checkIcon : null)}
             />
           </View>
         </List.Accordion>
@@ -65,7 +65,7 @@ const CharacterFilterContent = () => {
           style={styles.listAccordion}
           titleStyle={styles.listAccordionTitle}
           title="Gender"
-          left={props => (
+          left={() => (
             <FontAwesome5 name="user" size={25} color={Colors.focused} />
           )}>
           <View style={{left: -30}}>
@@ -73,19 +73,19 @@ const CharacterFilterContent = () => {
               title="Male"
               titleStyle={styles.listItem}
               onPress={() => filterGender('Male')}
-              left={props => (
+              left={() => (
                 <FontAwesome5 name="male" size={25} color={Colors.focused} />
               )}
-              right={props => (filter.gender === 'Male' ? checkIcon : null)}
+              right={() => (filter.gender === 'Male' ? checkIcon : null)}
             />
             <List.Item
               title="Female"
               titleStyle={styles.listItem}
               onPress={() => filterGender('Female')}
-              left={props => (
+              left={() => (
                 <FontAwesome5 name="female" size={25} color={Colors.focused} />
               )}
-              right={props => (filter.gender === 'Female' ? checkIcon : null)}
+              right={() => (filter.gender === 'Female' ? checkIcon : null)}
             />
           </View>
         </List.Accordion>

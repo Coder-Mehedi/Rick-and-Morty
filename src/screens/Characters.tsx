@@ -24,7 +24,7 @@ const Characters = () => {
       style={styles.container}
       ref={drawer}
       drawerWidth={300}
-      drawerPosition="left"
+      drawerPosition="right"
       renderNavigationView={() => <CharacterFilterContent />}>
       <SearchAndFilter
         drawer={drawer}
